@@ -1,3 +1,2 @@
-Zeebe Kinesis Exporter
-=====================
-
+# zeebe-kinesis-exporter
+Zeebe kinesis exporter
