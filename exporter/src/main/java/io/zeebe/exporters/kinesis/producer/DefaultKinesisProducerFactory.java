@@ -23,7 +23,7 @@ public class DefaultKinesisProducerFactory implements KinesisProducerFactory {
   @Override
   public KinesisProducer newProducer(Config config) {
     final KinesisProducerConfiguration options = new KinesisProducerConfiguration();
-    options.setCredentialsProvider(config.getAWSConfig());
+    //options.setCredentialsProvider(config.getAWSConfig());
     options.setRegion(config.getAwsRegion());
     //    options.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
     //    options.put(
