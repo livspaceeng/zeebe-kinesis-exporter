@@ -15,6 +15,7 @@
  */
 package io.zeebe.exporters.kinesis.producer;
 
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.kinesis.producer.KinesisProducer;
 import com.amazonaws.services.kinesis.producer.KinesisProducerConfiguration;
 import io.zeebe.exporters.kinesis.config.Config;
@@ -23,7 +24,7 @@ public class DefaultKinesisProducerFactory implements KinesisProducerFactory {
   @Override
   public KinesisProducer newProducer(Config config) {
     final KinesisProducerConfiguration options = new KinesisProducerConfiguration();
-    //options.setCredentialsProvider(config.getAWSConfig());
+    options.setCredentialsProvider(new DefaultAWSCredentialsProviderChain());
     options.setRegion(config.getAwsRegion());
     //    options.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
     //    options.put(
