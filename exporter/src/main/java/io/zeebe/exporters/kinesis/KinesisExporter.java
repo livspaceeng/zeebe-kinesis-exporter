@@ -129,7 +129,7 @@ public class KinesisExporter implements Exporter {
         requests.consume(this::updatePosition);
       }
 
-      logger.debug("Exported record {}", record);
+      logger.trace("Exported record {}", record);
     }
   }
 
