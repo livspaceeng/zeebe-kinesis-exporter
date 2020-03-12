@@ -23,27 +23,10 @@ import io.zeebe.exporters.kinesis.config.Config;
 public class DefaultKinesisProducerFactory implements KinesisProducerFactory {
   @Override
   public KinesisProducer newProducer(Config config) {
+
     final KinesisProducerConfiguration options = new KinesisProducerConfiguration();
     options.setCredentialsProvider(new DefaultAWSCredentialsProviderChain());
     options.setRegion(config.getAwsRegion());
-    //    options.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
-    //    options.put(
-    //        ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION,
-    //        config.getProducer().getMaxConcurrentRequests());
-    //    options.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, Integer.MAX_VALUE);
-    //    options.put(
-    //        ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,
-    //        (int) config.getProducer().getRequestTimeout().toMillis());
-    //    options.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getProducer().getServers());
-    //    options.put(ProducerConfig.CLIENT_ID_CONFIG, config.getProducer().getClientId());
-    //
-    //    // allow user configuration to override producer options
-    //    if (config.getProducer().getConfig() != null) {
-    //      options.putAll(config.getProducer().getConfig());
-    //    }
-    //
-    //    options.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, RecordIdSerializer.class);
-    //    options.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, GenericRecordSerializer.class);
 
     return new KinesisProducer(options);
   }

@@ -40,7 +40,7 @@ import org.apache.kafka.common.errors.InterruptException;
 import org.slf4j.Logger;
 
 /**
- * Implementation of a Zeebe exporter producing serialized records to a given Kafka topic.
+ * Implementation of a Zeebe exporter producing serialized records to a given Kinesis topic.
  *
  * <p>TODO: implement another transmission strategy using transactions and see which is better
  */
@@ -129,7 +129,7 @@ public class KinesisExporter implements Exporter {
         requests.consume(this::updatePosition);
       }
 
-      logger.trace("Exported record {}", record);
+      logger.debug("Exported record {}", record);
     }
   }
 
@@ -155,7 +155,7 @@ public class KinesisExporter implements Exporter {
       closeInternal();
     } catch (ExecutionException e) {
       logger.error(
-          "Failed to ensure record was sent to Kafka, will stop exporting to prevent missing records",
+          "Failed to ensure record was sent to Kinesis, will stop exporting to prevent missing records",
           e);
       closeInternal();
     } catch (InterruptedException e) { // NOSONAR: throwing InterruptException flags interrupt again

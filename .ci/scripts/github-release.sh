@@ -2,19 +2,19 @@
 
 export GITHUB_TOKEN=${GITHUB_TOKEN_PSW}
 export GITHUB_ORG=zeebe-io
-export GITHUB_REPO=zeebe-kafka-exporter
+export GITHUB_REPO=zeebe-kinesis-exporter
 
 # do github release
 curl -sL https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2 | tar xjvf - --strip 3
-./github-release release --user ${GITHUB_ORG} --repo ${GITHUB_REPO} --tag ${RELEASE_VERSION} --draft --name "Zeebe Kafka Exporter ${RELEASE_VERSION}" --description ""
+./github-release release --user ${GITHUB_ORG} --repo ${GITHUB_REPO} --tag ${RELEASE_VERSION} --draft --name "Zeebe Kinesis Exporter ${RELEASE_VERSION}" --description ""
 
 # upload exporter
 cd exporter/target
 
-export ARTIFACT=zeebe-kafka-exporter-${RELEASE_VERSION}.jar
+export ARTIFACT=zeebe-kinesis-exporter-${RELEASE_VERSION}.jar
 export CHECKSUM=${ARTIFACT}.sha1sum
 
-export ARTIFACT_UBER=zeebe-kafka-exporter-${RELEASE_VERSION}-uber.jar
+export ARTIFACT_UBER=zeebe-kinesis-exporter-${RELEASE_VERSION}-uber.jar
 export CHECKSUM_UBER=${ARTIFACT_UBER}.sha1sum
 
 # create checksum files
@@ -32,10 +32,10 @@ cd ../..
 
 cd samples/target
 
-export ARTIFACT=zeebe-kafka-exporter-samples-${RELEASE_VERSION}.jar
+export ARTIFACT=zeebe-kinesis-exporter-samples-${RELEASE_VERSION}.jar
 export CHECKSUM=${ARTIFACT}.sha1sum
 
-export ARTIFACT_UBER=zeebe-kafka-exporter-samples-${RELEASE_VERSION}-uber.jar
+export ARTIFACT_UBER=zeebe-kinesis-exporter-samples-${RELEASE_VERSION}-uber.jar
 export CHECKSUM_UBER=${ARTIFACT_UBER}.sha1sum
 
 # create checksum files
@@ -52,7 +52,7 @@ cd ../..
 # upload serde
 cd serde/target
 
-export ARTIFACT=zeebe-kafka-exporter-serde-${RELEASE_VERSION}.jar
+export ARTIFACT=zeebe-kinesis-exporter-serde-${RELEASE_VERSION}.jar
 export CHECKSUM=${ARTIFACT}.sha1sum
 
 # create checksum files

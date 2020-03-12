@@ -35,7 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class KinesisExporterTest {
-  private static final String EXPORTER_ID = "kafka";
+  private static final String EXPORTER_ID = "kinesis";
 
   private final TomlConfig tomlConfig = new TomlConfig();
   private final MockKinesisProducerFactory mockProducerFactory = new MockKinesisProducerFactory();
