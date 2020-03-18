@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 
-  <Appenders>
-    <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-    </Console>
-  </Appenders>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue} Kinesis Exporter: %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		<Logger level="info" name="io.zeebe.exporters.kinesis" />
+		<Logger level="warn" name="com.amazonaws.services.kinesis.producer" />
 
-  <Loggers>
-    <Logger level="info" name="io.zeebe.exporters.kinesis"/>
-    <Logger level="info" name="io.zeebe.broker.exporters"/>
-    <Logger level="warn" name="com.amazonaws.services.kinesis.producer"/>
-    <Logger level="warn" name="org.apache"/>
-    <Logger level="warn" name="kafka"/>
-
-    <Root level="info">
-      <AppenderRef ref="Console"/>
-    </Root>
-  </Loggers>
-
+		<Root level="error">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
 </Configuration>

@@ -31,7 +31,7 @@ import org.junit.Test;
 public class TomlRecordsConfigParserTest {
   private static final Set<ValueType> EXPECTED_VALUE_TYPES =
       EnumSet.complementOf(
-          EnumSet.of(ValueType.EXPORTER, ValueType.NULL_VAL, ValueType.SBE_UNKNOWN));
+          EnumSet.of(ValueType.NULL_VAL, ValueType.SBE_UNKNOWN));
 
   private final TomlRecordsConfigParser parser = new TomlRecordsConfigParser();
 
