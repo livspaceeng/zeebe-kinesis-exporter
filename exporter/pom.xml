@@ -13,7 +13,7 @@
 		<artifactId>zeebe-kinesis-exporter-root</artifactId>
 		<groupId>io.zeebe</groupId>
 		<relativePath>../</relativePath>
-		<version>0.5</version>
+		<version>0.6</version>
 	</parent>
 
 	<build>

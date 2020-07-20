@@ -9,7 +9,7 @@
 	<artifactId>zeebe-kinesis-exporter-root</artifactId>
 	<groupId>io.zeebe</groupId>
 	<packaging>pom</packaging>
-	<version>0.5</version>
+	<version>0.6</version>
 	<inceptionYear>2020</inceptionYear>
 	<url>https://github.com/livspaceeng/zeebe-kinesis-exporter</url>
 
@@ -36,7 +36,7 @@
 		<version.protobuf>3.11.4</version.protobuf>
 		<version.slf4j>1.7.26</version.slf4j>
 		<log4j.version>2.12.1</log4j.version>
-		<version.zeebe>0.22.2</version.zeebe>
+		<version.zeebe>0.23.4</version.zeebe>
 		<version.zeebe-exporter-protobuf>0.11.0</version.zeebe-exporter-protobuf>
 
 		<!-- plugin version -->

@@ -102,18 +102,29 @@ public class KinesisExporter implements Exporter {
       return;
     }
 
-    if (recordHandler.test(record)) {
-      final UserRecord userRecord = recordHandler.transform(record);
-      // final ProducerRecord<Record, Record> kinesisRecord = recordHandler.transform(record);
-      final Future<UserRecordResult> future = producer.addUserRecord(userRecord);
-      final Request request = new Request(record.getPosition(), future);
+    try {
+      if (recordHandler.test(record)) {
+        final UserRecord userRecord = recordHandler.transform(record);
+        // final ProducerRecord<Record, Record> kinesisRecord = recordHandler.transform(record);
+        if (userRecord.getData().capacity() < 1000 * 1000) {
+          final Future<UserRecordResult> future = producer.addUserRecord(userRecord);
+          final Request request = new Request(record.getPosition(), future);
 
-      while (!requests.offer(request)) {
-        logger.trace("Too many in flight records, blocking until at least one completes...");
-        requests.consume(this::updatePosition);
+          while (!requests.offer(request)) {
+            logger.trace("Too many in flight records, blocking until at least one completes...");
+            requests.consume(this::updatePosition);
+          }
+
+          logger.debug("Exported record {}", record);
+        } else {
+          logger.error(
+              "Record with size {} bytes found! Record exceeds the maximum specified size of 1MB. Skipping record: {}",
+              userRecord.getData().capacity(),
+              record);
+        }
       }
-
-      logger.debug("Exported record {}", record);
+    } catch (Exception e) {
+      logger.error("Error publishing kinesis record! Skipping record: {}", record);
     }
   }
 
