@@ -33,7 +33,7 @@
 		<additionalparam>-Xdoclint:none</additionalparam>
 
 		<!-- project dependencies -->
-		<version.protobuf>3.11.4</version.protobuf>
+		<version.protobuf>3.16.3</version.protobuf>
 		<version.slf4j>1.7.26</version.slf4j>
 		<log4j.version>2.12.1</log4j.version>
 		<version.zeebe>0.23.4</version.zeebe>
